@@ -7,7 +7,46 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ToDoMe-->
+        <!--ToDOMe-->
+        <scene sceneID="dZV-hE-1C4">
+            <objects>
+                <tableViewController id="0KZ-zn-6jH" customClass="CategoryViewController" customModule="ToDoMeList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7k4-GT-JMo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="HnE-Nh-L39">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HnE-Nh-L39" id="J6e-0x-e99">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0KZ-zn-6jH" id="Yk0-Ho-0V5"/>
+                            <outlet property="delegate" destination="0KZ-zn-6jH" id="ti2-WV-q5C"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="ToDOMe" id="KSm-vr-P1c">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZE2-dV-qGr">
+                            <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="0KZ-zn-6jH" id="3dq-q0-S4O"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="JCW-kh-5jY" kind="show" identifier="Item" id="RZE-HO-rHT"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRj-10-dck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="617" y="-38"/>
+        </scene>
+        <!--Items-->
         <scene sceneID="Sgs-7X-Gzr">
             <objects>
                 <tableViewController id="JCW-kh-5jY" customClass="ToDoMeViewController" customModule="ToDoMeList" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,9 +54,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="pRM-la-cpx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="JCW-kh-5jY" id="fia-0v-rnn"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewItemCell" id="aUX-to-htZ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aUX-to-htZ" id="R1D-hL-z2s">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
@@ -30,7 +77,7 @@
                             <outlet property="delegate" destination="JCW-kh-5jY" id="rqC-63-upD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ToDoMe" id="1m3-hn-lNb">
+                    <navigationItem key="navigationItem" title="Items" id="1m3-hn-lNb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="q9r-fe-vUx">
                             <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <connections>
@@ -60,12 +107,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="JCW-kh-5jY" kind="relationship" relationship="rootViewController" id="azT-FV-S1Z"/>
+                        <segue destination="0KZ-zn-6jH" kind="relationship" relationship="rootViewController" id="Bl2-gj-xUj"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v80-fE-bd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372" y="-32.512315270935964"/>
+            <point key="canvasLocation" x="-127" y="17"/>
         </scene>
     </scenes>
 </document>

@@ -13,6 +13,7 @@
 		CA8A66C12358AA750087D555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8A66C02358AA750087D555 /* Assets.xcassets */; };
 		CA8A66C42358AA750087D555 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8A66C22358AA750087D555 /* LaunchScreen.storyboard */; };
 		CAD242E8235CD65C00D74DFF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAD242E6235CD65C00D74DFF /* Model.xcdatamodeld */; };
+		CAD242EA235E320200D74DFF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD242E9235E320200D74DFF /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CA8A66C32358AA750087D555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA8A66C52358AA750087D555 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAD242E7235CD65C00D74DFF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		CAD242E9235E320200D74DFF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8A66BB2358AA730087D555 /* ToDoMeViewController.swift */,
+				CAD242E9235E320200D74DFF /* CategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD242EA235E320200D74DFF /* CategoryViewController.swift in Sources */,
 				CA8A66BC2358AA730087D555 /* ToDoMeViewController.swift in Sources */,
 				CA8A66BA2358AA730087D555 /* AppDelegate.swift in Sources */,
 				CAD242E8235CD65C00D74DFF /* Model.xcdatamodeld in Sources */,
