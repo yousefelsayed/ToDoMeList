@@ -8,7 +8,8 @@
 
 import UIKit
 import CoreData
-class ToDoMeViewController: UITableViewController {
+import SwipeCellKit
+class ToDoMeViewController: SwipeViewController {
     var itemArray = [Item]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selectedCategory : Category?
@@ -19,15 +20,15 @@ class ToDoMeViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-       
+        tableView.separatorStyle = .none
+        navigationController?.navigationBar.backgroundColor = .systemBlue
 
 }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         let item = itemArray[indexPath.row]
         cell.textLabel?.text = item.title
         cell.accessoryType = item.done ? .checkmark : .none
@@ -40,6 +41,11 @@ class ToDoMeViewController: UITableViewController {
         saveItems()
         tableView.deselectRow(at: indexPath, animated: true)
         
+    }
+    override func updateModel(at index: IndexPath) {
+        context.delete(itemArray[index.row])
+        itemArray.remove(at: index.row)
+        saveItems()
     }
     
     @IBAction func addNewItem(_ sender: Any) {
@@ -84,7 +90,7 @@ class ToDoMeViewController: UITableViewController {
     func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest() , predicate : NSPredicate? = nil)
     {
         let categoryPredicate = NSPredicate(format :"parentCategory.name MATCHES %@",selectedCategory!.name!)
-        print(categoryPredicate)
+        //print(categoryPredicate)
         if let additionalPredicate = predicate
         {
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate , additionalPredicate])
@@ -104,6 +110,7 @@ class ToDoMeViewController: UITableViewController {
                }
         tableView.reloadData()
     }
+    
 }
 
 extension ToDoMeViewController : UISearchBarDelegate
@@ -112,7 +119,7 @@ extension ToDoMeViewController : UISearchBarDelegate
         let request : NSFetchRequest<Item> = Item.fetchRequest()
         request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
          request.sortDescriptors = [NSSortDescriptor(key: "title", ascending:true)]
-        print("search bar")
+        //print("search bar")
         loadItems(with :request ,predicate: request.predicate)
         tableView.reloadData()
     }
@@ -127,6 +134,6 @@ extension ToDoMeViewController : UISearchBarDelegate
                }
     }
        
-    
+  
 }
 

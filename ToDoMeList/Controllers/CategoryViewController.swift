@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
-class CategoryViewController: UITableViewController {
+
+class CategoryViewController: SwipeViewController {
     var categories = [Category]()
      let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 80.0
 loadCategories()
        
     }
@@ -23,9 +25,8 @@ loadCategories()
         return categories.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-               let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
-        let category = categories[indexPath.row]
-        cell.textLabel?.text = category.name
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        cell.textLabel?.text = categories[indexPath.row].name ?? "No Categories added yet"
         return cell
         
     }
@@ -77,6 +78,13 @@ loadCategories()
         performSegue(withIdentifier: "Item", sender: self)
         
     }
+    override func updateModel(at indexpath: IndexPath) {
+    context.delete(categories[indexpath.row])
+    categories.remove(at: indexpath.row)
+            
+       saveCategories()
+        
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVc = segue.destination as! ToDoMeViewController
@@ -87,3 +95,4 @@ loadCategories()
         
     }
 }
+
